@@ -3,22 +3,42 @@
     {
       "name": "Arto Hellas",
       "number": "040-123456",
-      "id": 1
+      "id": "1"
     },
     {
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
-      "id": 2
+      "id": "2"
     },
     {
       "name": "Dan Abramov",
       "number": "12-43-234345",
-      "id": 3
+      "id": "3"
     },
     {
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
-      "id": 4
+      "id": "4"
+    },
+    {
+      "id": "5a82",
+      "name": "Steve Jobs",
+      "number": "0725-522-488"
+    },
+    {
+      "id": "e2cc",
+      "name": "Donald Trump",
+      "number": "0703-830-063"
+    },
+    {
+      "id": "e3ea",
+      "name": "Nikola Tesla",
+      "number": "0711-866-344"
+    },
+    {
+      "id": "0db1",
+      "name": "Elon Musk",
+      "number": "0110-864-707"
     }
   ]
 }

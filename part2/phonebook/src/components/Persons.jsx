@@ -1,10 +1,18 @@
-const Persons = ({ query, persons, filteredPersons }) => {
+const Persons = ({ query, persons, filteredPersons, deletePerson }) => {
   return (
     <div>
       {query === '' ? (
         persons.map(person => (
           <div key={person.name}>
-            {person.name} {person.number}
+            {person.name} {person.number}&nbsp;
+            <button 
+              onClick={() => 
+                confirm(`Delete ${person.name}?`) 
+                ? deletePerson(person.id) 
+                : ''}
+            >
+              delete
+            </button>
           </div>
         ))
       ) : (
