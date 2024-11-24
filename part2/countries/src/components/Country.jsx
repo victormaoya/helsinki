@@ -60,7 +60,10 @@ const Country = ({apiKey, filtered}) => {
           <div><b>Area: </b>{country.area} sq. km.</div>
           <div><b>Population: </b>{country.population}</div>
           <div>
-            <b>Currency: </b>{country.currencies ? Object.values(country.currencies)[0].name : 'No currency vailable'}
+            <b>Currency: </b>
+            {country.currencies 
+            ? `${Object.values(country.currencies)[0].name} (${Object.values(country.currencies)[0].symbol})`
+            : 'No currency vailable'}
           </div>
 
           <h3>Languages</h3>
