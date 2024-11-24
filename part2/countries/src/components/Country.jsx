@@ -62,7 +62,7 @@ const Country = ({apiKey, filtered}) => {
 
           <h3>Languages</h3>
           <ul>
-          {Object.keys(country.languages).map((language, index) => (
+          {Object.values(country.languages).map((language, index) => (
             <li key={index}>{language}</li>
           ))}
           </ul>
