@@ -77,6 +77,7 @@ const App = () => {
             setNotification(`Information of ${newName} has already been removed from the server`)
             setPersons(persons.filter(person => person.id !== id))
             setErrorMessage(true)
+            console.log(error)
           })
       }
     } else {
@@ -100,6 +101,9 @@ const App = () => {
       .deletion(id)
       .then(returnedPerson => {
         setPersons(persons.filter(person => person.id !== returnedPerson.id))
+      })
+      .catch(error => {
+        console.error('error deleting person', error)
       })
   }
 

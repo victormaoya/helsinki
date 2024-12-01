@@ -7,8 +7,8 @@ const Persons = ({ query, persons, filteredPersons, deletePerson }) => {
             {person.name} {person.number}&nbsp;
             <button 
               onClick={() => 
-                confirm(`Delete ${person.name}?`) 
-                ? deletePerson(person.id) 
+                window.confirm(`Delete ${person.name}?`) 
+                ? deletePerson(person.id)
                 : ''}
             >
               delete
