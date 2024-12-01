@@ -2,6 +2,6 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Jobs, Steve",
-  "number": "+1 (336) 245 1960"
+  "name": "George Washington",
+  "number": "+1 (557) 674 9029"
 }
