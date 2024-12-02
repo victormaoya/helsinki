@@ -1,27 +1,19 @@
 const Persons = ({ query, persons, filteredPersons, deletePerson }) => {
+  const displayedPersons = query === '' ? persons : filteredPersons
+
   return (
     <div>
-      {query === '' ? (
-        persons.map(person => (
-          <div key={person.name}>
-            {person.name} {person.number}&nbsp;
-            <button 
-              onClick={() => 
-                window.confirm(`Delete ${person.name}?`) 
-                ? deletePerson(person.id)
-                : ''}
-            >
-              delete
-            </button>
-          </div>
-        ))
-      ) : (
-        filteredPersons.map(person => (
-          <div key={person.name}>
-            {person.name} {person.numer}
-          </div>
-        ))
-      )}
+      {displayedPersons.map(person => (
+        <div key={person.id} className='person-item'>
+          <span>{person.name} ⦁ {person.number}</span>
+          <button 
+            onClick={() => deletePerson(person.id)}
+            aria-label={`Delete ${person.name}`}
+          >
+            delete
+          </button>
+        </div>
+      ))}
     </div>
   )
 }

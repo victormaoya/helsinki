@@ -1,12 +1,14 @@
-const Filter = ({query, handleSearch}) => {
-  return (
-    <div>
-      filter shown with: <input
+const Filter = ({ query, handleSearch }) => (
+  <div>
+    <label>
+      Filter shown with:
+      <input
+        type='text'
         value={query}
         onChange={handleSearch}
       />
-    </div>
-  )
-}
+    </label>
+  </div>
+)
 
 export default Filter

@@ -6,13 +6,15 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 
-morgan.token('body', (req, res) => JSON.stringify(req.body))
+morgan.token('body', (req) => JSON.stringify(req.body))
 
 const errorHandler = (error, request, response, next) => {
   console.error(error)
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).send({ error: error.message })
   }
 
   next(error)
@@ -38,8 +40,8 @@ app.get('/api/persons/:id', (request, response, next) => {
       } else {
         response.status(404).end()
       }
-  })
-  .catch(error => next(error))
+    })
+    .catch(error => next(error))
 })
 
 app.get('/info', (request, response) => {
@@ -47,13 +49,12 @@ app.get('/info', (request, response) => {
     response.send(
       `
       <p>Phonebook has info for ${persons.length} people</p>
-      <p>${new Date().toString()}</p>
-      `
-    )    
+      <p>${new Date().toString()}</p>`
+    )
   })
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
   const body = request.body
 
   if (body.name === undefined || body.number === undefined) {
@@ -68,6 +69,7 @@ app.post('/api/persons', (request, response) => {
   person.save().then(savedPerson => {
     response.json(savedPerson)
   })
+    .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
@@ -85,7 +87,7 @@ app.put('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
     .then(deletedPerson => {
       response.json(deletedPerson)
