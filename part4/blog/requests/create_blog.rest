@@ -2,8 +2,9 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "the Great Wall of China",
-  "author": "Socrates",
-  "url": "https://greatwall.ex",
-  "likes": 18
+  "title": "Sydney OPera House",
+  "author": "Fabius Maximus",
+  "url": "https://opera.dev",
+  "likes": 109,
+  "userId": "675e8b15efd95f0041dd5fb7"
 }

@@ -43,6 +43,7 @@ describe('adding a new blog', () => {
       author: 'Marlon Brando',
       url: 'https://titanic.org',
       likes: 108,
+      userId: '675e8b15efd95f0041dd5fb7'
     }
   
     await api
@@ -57,15 +58,24 @@ describe('adding a new blog', () => {
   })
   
   test('fails with status code 400 bad request if title or url is missing', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    
     const newBlog = {
       author: 'D.B. Cooper',
-      likes: 32,
+      likes: 32
     }
   
-    await api
+    const result = await api
       .post('/api/blogs')
       .send(newBlog)
       .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    assert(result.body.error.includes('title or url missing'))
+
+    const blogsAtEnd = await helper.blogsInDb()
+
+    assert.strictEqual(blogsAtStart.length, blogsAtEnd.length)
   })
 
   test('defaults the likes property to zero if missing', async () => {
