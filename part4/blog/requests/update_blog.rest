@@ -1,0 +1,10 @@
+PUT http://localhost:3003/api/blogs/674df1cca6ec858ad5cbbbc6
+Content-Type: application/json
+
+{
+    "title": "Burj Khalifa",
+    "author": "Plato",
+    "url": "https://khalifa.dev",
+    "likes": 52,
+    "id": "674df1cca6ec858ad5cbbbc6"
+  }
