@@ -17,13 +17,7 @@ blogsRouter.post('/', async (request, response) => {
     return response.status(400).json({ error: 'title or url missing' })
   }
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-  console.log(decodedToken.id)
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
-  const user = await User.findById(decodedToken.id)
+  const user = request.user
 
   const blog = new Blog({
     title: body.title,
@@ -57,18 +51,10 @@ blogsRouter.put('/:id', async (request, response) => {
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
-  const userid = decodedToken.id
-
   const blog = await Blog.findById(request.params.id)
-  console.log('BLOG:', blog)
+  const user = request.user
 
-  if (blog.user.toString() !== userid.toString()) {
+  if (blog.user.toString() !== user.id.toString()) {
     return response.status(403).json({ error: 'only the creator of the blog can delete it' })
   }
 
