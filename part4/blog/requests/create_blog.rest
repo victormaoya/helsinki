@@ -1,10 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhvcm5ldHMiLCJpZCI6IjY3NWVhNzNiZmFjY2E4MjUyMTU0OGExYyIsImlhdCI6MTczNDQ0OTkyM30.u0UPOVzQRpVCCPghwPWi-n8fm40Wp6yPpC5TbVQ9ymE
 
 {
-  "title": "Sydney OPera House",
-  "author": "Fabius Maximus",
-  "url": "https://opera.dev",
-  "likes": 109,
+  "title": "Bugatti Chiron",
+  "author": "Martin Luther",
+  "url": "https://bug-ch.dev",
+  "likes": 3060,
   "userId": "675e8b15efd95f0041dd5fb7"
 }
